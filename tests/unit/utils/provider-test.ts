@@ -10,24 +10,18 @@ const WithCurrentUser = EmberObject.extend({
 module("Unit | Utility | provider", function(hooks) {
   setupTest(hooks);
 
-  hooks.beforeEach(function() {
-    this.owner.register("demo:current-user", WithCurrentUser, {
-      singleton: false
-    });
-  });
-
   test("can inject a provider into an object", function(assert) {
-    const obj = this.owner.lookup("demo:current-user");
+    const obj = WithCurrentUser.create(this.owner.ownerInjection());
 
-    assert.deepEqual(obj.currentUser.fetch(), {
+    assert.deepEqual(obj.get("currentUser").fetch(), {
       name: "Alex"
     });
   });
 
   test("different objects get different instances of the provider", function(assert) {
-    const obj1 = this.owner.lookup("demo:current-user");
-    const obj2 = this.owner.lookup("demo:current-user");
+    const obj1 = WithCurrentUser.create(this.owner.ownerInjection());
+    const obj2 = WithCurrentUser.create(this.owner.ownerInjection());
 
-    assert.notEqual(obj1.currentUser, obj2.currentUser);
+    assert.notEqual(obj1.get("currentUser"), obj2.get("currentUser"));
   });
 });

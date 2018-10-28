@@ -5,3 +5,9 @@ export default class CurrentUserProvider extends Provider {
     return { name: "Alex" };
   }
 }
+
+declare module "ember-data-provider" {
+  interface Registry {
+    "current-user": CurrentUserProvider;
+  }
+}
