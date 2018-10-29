@@ -1,7 +1,7 @@
 import { module, test } from "qunit";
 import { setupTest } from "ember-qunit";
 import EmberObject from "@ember/object";
-import { inject as provider } from "ember-data-provider";
+import { inject as provider } from "ember-provider";
 
 const WithCurrentUser = EmberObject.extend({
   currentUser: provider("current-user")

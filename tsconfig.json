@@ -27,16 +27,16 @@
         "tests/dummy/app/*",
         "app/*"
       ],
-      "ember-data-provider": [
+      "ember-provider": [
         "addon"
       ],
-      "ember-data-provider/*": [
+      "ember-provider/*": [
         "addon/*"
       ],
-      "ember-data-provider/test-support": [
+      "ember-provider/test-support": [
         "addon-test-support"
       ],
-      "ember-data-provider/test-support/*": [
+      "ember-provider/test-support/*": [
         "addon-test-support/*"
       ],
       "*": [

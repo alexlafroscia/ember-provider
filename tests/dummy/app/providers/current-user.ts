@@ -1,4 +1,4 @@
-import { Provider } from "ember-data-provider";
+import { Provider } from "ember-provider";
 
 export default class CurrentUserProvider extends Provider {
   fetch() {
@@ -6,7 +6,7 @@ export default class CurrentUserProvider extends Provider {
   }
 }
 
-declare module "ember-data-provider" {
+declare module "ember-provider" {
   interface Registry {
     "current-user": CurrentUserProvider;
   }

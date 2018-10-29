@@ -1,4 +1,4 @@
-ember-data-provider
+ember-provider
 ==============================================================================
 
 [Short description of the addon.]
@@ -7,7 +7,7 @@ Installation
 ------------------------------------------------------------------------------
 
 ```
-ember install ember-data-provider
+ember install ember-provider
 ```
 
 
@@ -23,7 +23,7 @@ Contributing
 ### Installation
 
 * `git clone <repository-url>`
-* `cd ember-data-provider`
+* `cd ember-provider`
 * `yarn install`
 
 ### Linting
