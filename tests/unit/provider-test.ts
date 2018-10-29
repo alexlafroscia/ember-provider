@@ -7,7 +7,7 @@ const WithCurrentUser = EmberObject.extend({
   currentUser: provider('current-user')
 });
 
-module('Unit | Utility | provider', function(hooks) {
+module('Unit | provider', function(hooks) {
   setupTest(hooks);
 
   test('can inject a provider into an object', function(assert) {
