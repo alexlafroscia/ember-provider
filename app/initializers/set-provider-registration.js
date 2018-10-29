@@ -1,4 +1,4 @@
 export {
   default,
   initialize
-} from "ember-provider/initializers/set-provider-registration";
+} from 'ember-provider/initializers/set-provider-registration';

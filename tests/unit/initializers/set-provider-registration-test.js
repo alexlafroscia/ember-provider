@@ -1,17 +1,17 @@
-import Application from "@ember/application";
+import Application from '@ember/application';
 
-import { initialize } from "dummy/initializers/set-provider-registration";
-import { module, test } from "qunit";
-import { setupTest } from "ember-qunit";
-import { run } from "@ember/runloop";
+import { initialize } from 'dummy/initializers/set-provider-registration';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
+import { run } from '@ember/runloop';
 
-module("Unit | Initializer | set-provider-registration", function(hooks) {
+module('Unit | Initializer | set-provider-registration', function(hooks) {
   setupTest(hooks);
 
   hooks.beforeEach(function() {
     this.TestApplication = Application.extend();
     this.TestApplication.initializer({
-      name: "initializer under test",
+      name: 'initializer under test',
       initialize
     });
 
@@ -19,13 +19,13 @@ module("Unit | Initializer | set-provider-registration", function(hooks) {
   });
 
   hooks.afterEach(function() {
-    run(this.application, "destroy");
+    run(this.application, 'destroy');
   });
 
-  test("providers are created on lookup", async function(assert) {
+  test('providers are created on lookup', async function(assert) {
     await this.application.boot();
 
-    assert.deepEqual(this.application.registeredOptionsForType("provider"), {
+    assert.deepEqual(this.application.registeredOptionsForType('provider'), {
       singleton: false
     });
   });

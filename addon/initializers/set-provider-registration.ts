@@ -1,7 +1,7 @@
-import Application from "@ember/application";
+import Application from '@ember/application';
 
 export function initialize(owner: Application) {
-  owner.registerOptionsForType("provider", {
+  owner.registerOptionsForType('provider', {
     singleton: false
   });
 }
