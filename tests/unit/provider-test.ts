@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import td from 'testdouble';
 import EmberObject from '@ember/object';
+import { getOwner } from '@ember/application';
 import { inject as provider } from 'ember-provider';
 
 const WithCurrentUser = EmberObject.extend({
@@ -43,5 +44,12 @@ module('Unit | provider', function(hooks) {
     assert.verify(obj.willDestroy(), { times: 1 });
     assert.verify(obj.get('user1').destroy());
     assert.verify(obj.get('user2').destroy());
+  });
+
+  test('the provider has access to the `owner`', function(assert) {
+    const obj = WithCurrentUser.create(this.owner.ownerInjection());
+    const provider = obj.get('currentUser');
+
+    assert.equal(getOwner(provider), this.owner);
   });
 });

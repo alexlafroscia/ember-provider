@@ -1,4 +1,8 @@
-export { default as Provider } from './provider';
-export { default as inject } from './inject';
+import Provider from './provider';
 
-export interface Registry {}
+export { default as inject } from './inject';
+export { Provider };
+
+export interface Registry {
+  [prop: string]: Provider;
+}
