@@ -9,7 +9,8 @@ const WithCurrentUser = EmberObject.extend({
 });
 
 const WithDestroyBehavior = EmberObject.extend({
-  currentUser: provider('current-user'),
+  user1: provider('current-user'),
+  user2: provider('current-user'),
 
   willDestroy: td.function('will-destroy')
 });
@@ -35,10 +36,12 @@ module('Unit | provider', function(hooks) {
   test('it destroys the provider when the object is destroyed', function(assert) {
     const obj = WithDestroyBehavior.create(this.owner.ownerInjection());
 
-    td.replace(obj.get('currentUser'), 'destroy');
+    td.replace(obj.get('user1'), 'destroy');
+    td.replace(obj.get('user2'), 'destroy');
     obj.willDestroy();
 
-    assert.verify(obj.willDestroy());
-    assert.verify(obj.get('currentUser').destroy());
+    assert.verify(obj.willDestroy(), { times: 1 });
+    assert.verify(obj.get('user1').destroy());
+    assert.verify(obj.get('user2').destroy());
   });
 });
