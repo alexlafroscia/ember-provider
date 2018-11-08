@@ -33,12 +33,12 @@ This will create a new class, extending the `Provider` class from the addon. You
 import { Provider } from 'ember-provider';
 import { task } from 'ember-concurrency';
 
-export default class LoadData extends Provider {
-  fetch: task(function* () {
+export default Provider.extend({
+  fetch: task(function*() {
     const result = yield fetch('/api/whatever');
     return yield result.json();
   })
-}
+});
 ```
 
 ### Consuming the Provider
