@@ -58,6 +58,12 @@ export default Component.extend({
 });
 ```
 
+When injecting a Provider into a component, it will search upward in your component hierarchy to find another component with the same provider and share an instance with them. This provides a means for components to communicate without the need to pass properties between them.
+
+Note: This behavior is subject to change before the `1.0` release, so keep an eye on the release notes!
+
+#### In ES6 Classes
+
 Alternatively, if you want to inject a provider into an ES6-style class, you can combine `inject` with a utility from `@ember-decorators/object` to create a decorator for `ember-provider`
 
 ```javascript
