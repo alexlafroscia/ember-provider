@@ -1,10 +1,16 @@
-import { IEmberObjectWithParentView, IProviderKlass } from './interfaces';
-import { Provider } from '../index';
+import Component from '@ember/component';
 import EmberObject from '@ember/object';
+
+import { IProviderKlass } from './interfaces';
+import { Provider } from '../index';
+
+type ComponentWithParentView = Component & {
+  parentView?: Component;
+};
 
 export default function findParentProvider(
   injectedProviders: WeakMap<EmberObject, Provider[]>,
-  component: IEmberObjectWithParentView,
+  component: ComponentWithParentView,
   ProviderKlass: IProviderKlass
 ): Provider | undefined {
   if (component.parentView) {
