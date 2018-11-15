@@ -1,4 +1,5 @@
 import { getOwner } from '@ember/application';
+import Component from '@ember/component';
 import EmberObject from '@ember/object';
 import ComputedProperty from '@ember/object/computed';
 import { addListener } from '@ember/object/events';
@@ -28,17 +29,16 @@ class ProviderInjection<K extends keyof Registry> extends ComputedProperty<
       let provider: Provider;
       let isOwner = true;
 
-      const possibleProvider = findParentProvider(
-        INJECTED_PROVIDERS,
-        this,
-        ProviderKlass
-      );
+      const possibleProvider =
+        this instanceof Component
+          ? findParentProvider(INJECTED_PROVIDERS, this, ProviderKlass)
+          : undefined;
 
-      if (!possibleProvider) {
-        provider = ProviderKlass.create(owner.ownerInjection());
-      } else {
+      if (possibleProvider) {
         isOwner = false;
         provider = possibleProvider;
+      } else {
+        provider = ProviderKlass.create(owner.ownerInjection());
       }
 
       if (isOwner) {
