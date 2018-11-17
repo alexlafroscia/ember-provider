@@ -60,7 +60,7 @@ export default Component.extend({
 
 When injecting a Provider into a component, it will search upward in your component hierarchy to find another component with the same provider and share an instance with them. This provides a means for components to communicate without the need to pass properties between them.
 
-Note: This behavior is subject to change before the `1.0` release, so keep an eye on the release notes!
+Note: This behavior is subject to change before the `1.0.0` release, so keep an eye on the release notes!
 
 #### In ES6 Classes
 
@@ -82,6 +82,26 @@ export default class extends Component {
   }
 }
 ```
+
+## Prior Art
+
+- [Ember's Services](https://guides.emberjs.com/release/applications/services/)
+
+  The idea was to provide an API that's very similar to the existing Service API, but that does not create a single, global object for the entire application to share.
+
+- [Angular's Services and Providers](https://angular.io/guide/providers#limiting-provider-scope-with-components)
+
+  After starting work on this addon, it was brought to my attention that Angular's concept of services works in a similar manner.
+
+- [React's Context](https://reactjs.org/docs/context.html)
+
+  This was the inspiration for the ability of a component to look to their ancestors for an instance of a provider and share it with them. React uses the Context API to avoid the need to pass all properties through any intermediary components when threading data from an ancestor to a child component.
+
+  Developers using Ember can use [Contextual Component](https://guides.emberjs.com/release/components/wrapping-content-in-a-component/#toc_sharing-component-data-with-its-wrapped-content) to pass data from ancestor to child, but it doesn't fit every use case. This is more similar to React's [Render Props](https://reactjs.org/docs/render-props.html) concept.
+
+- [Alex Matchneer's](https://github.com/machty) [Subscriptions Twiddle](https://ember-twiddle.com/906a95d6625bdc66acdb238889366832?openFiles=subscription.js%2C)
+
+  This helped me understand how to create a Computed Property wrapper that has side-effects on the object it is used on.
 
 ## Contributing
 
