@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/alexlafroscia/ember-provider/compare/v0.3.0...v0.4.0) (2018-11-20)
+
+
+### Bug Fixes
+
+* add back in the the `ember-cli-typescript` publishing hooks ([a3f930b](https://github.com/alexlafroscia/ember-provider/commit/a3f930b)), closes [typed-ember/ember-cli-typescript#438](https://github.com/typed-ember/ember-cli-typescript/issues/438)
+
+
+### Features
+
+* assert that the expected provider was looked up ([f69f2d9](https://github.com/alexlafroscia/ember-provider/commit/f69f2d9)), closes [#10](https://github.com/alexlafroscia/ember-provider/issues/10)
+* create component for looking up a provider ([eadfe97](https://github.com/alexlafroscia/ember-provider/commit/eadfe97))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/alexlafroscia/ember-provider/compare/v0.2.0...v0.3.0) (2018-11-15)
 
