@@ -1,4 +1,5 @@
 import { getOwner } from '@ember/application';
+import { assert } from '@ember/debug';
 import Component from '@ember/component';
 import EmberObject from '@ember/object';
 import ComputedProperty from '@ember/object/computed';
@@ -22,9 +23,8 @@ class ProviderInjection<K extends keyof Registry> extends ComputedProperty<
   constructor(identifier: K) {
     function getter(this: EmberObject) {
       const owner = getOwner(this);
-      const ProviderKlass: IProviderKlass = owner.lookup(
-        `provider:${identifier}`
-      );
+      const registration = `provider:${identifier}`;
+      const ProviderKlass: IProviderKlass = owner.lookup(registration);
 
       let provider: Provider;
       let isOwner = true;
@@ -40,6 +40,8 @@ class ProviderInjection<K extends keyof Registry> extends ComputedProperty<
       } else {
         provider = ProviderKlass.create(owner.ownerInjection());
       }
+
+      assert(`Could not resolve \`${registration}\``, !!provider);
 
       if (isOwner) {
         // Modify the host class to also destroy the provider
